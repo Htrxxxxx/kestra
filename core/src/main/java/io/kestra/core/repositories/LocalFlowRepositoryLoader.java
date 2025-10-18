@@ -107,8 +107,8 @@ public class LocalFlowRepositoryLoader {
                                     parsed.getNamespace(), parsed.getId());
                             return; 
                         }
-                        FlowInterface existing = flowByUidInRepository.get(flowWithSource.uidWithoutRevision());
 
+                        FlowInterface existing = flowByUidInRepository.get(flowWithSource.uidWithoutRevision());
                         if (existing == null) {
                             flowRepository.create(parsed);
                             log.trace("Created flow {}.{}", parsed.getNamespace(), parsed.getId());
@@ -116,7 +116,7 @@ public class LocalFlowRepositoryLoader {
                             flowRepository.update(parsed, existing);
                             log.trace("Updated flow {}.{}", parsed.getNamespace(), parsed.getId());
                         }
-                        
+
                         processedInSameRun.put(flowUid, parsed);
                     } catch (FlowProcessingException | ConstraintViolationException e) {
                         log.warn("Unable to create flow {}", file, e);
